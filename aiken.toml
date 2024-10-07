@@ -1,14 +1,18 @@
-name = "topdeveloper55/ada-deposit-withdraw"
+name = "ada-withdraw/ada-deposit-withdraw"
 version = "0.0.0"
+compiler = "v1.1.4"
+plutus = "v3"
 license = "Apache-2.0"
-description = "Aiken contracts for project 'topdeveloper55/ada-deposit-withdraw'"
+description = "Aiken contracts for project 'ada-withdraw/ada-deposit-withdraw'"
 
 [repository]
-user = "topdeveloper55"
+user = "ada-withdraw"
 project = "ada-deposit-withdraw"
 platform = "github"
 
 [[dependencies]]
 name = "aiken-lang/stdlib"
-version = "main"
+version = "v2.1.0"
 source = "github"
+
+[config]

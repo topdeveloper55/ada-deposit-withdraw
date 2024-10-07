@@ -2,19 +2,13 @@
 
 Write validators in the `validators` folder, and supporting functions in the `lib` folder using `.ak` as a file extension.
 
-For example, as `validators/always_true.ak`
-
-```gleam
-validator {
-  fn spend(_datum: Data, _redeemer: Data, _context: Data) -> Bool {
+```aiken
+validator my_first_validator {
+  spend(_datum: Option<Data>, _redeemer: Data, _output_reference: Data, _context: Data) {
     True
   }
 }
 ```
-
-## smart contract function
-
-A Cardano smart contract that allows users to deposit ADA into the contract and only the owner of the contract can withdraw it
 
 ## Building
 
@@ -22,7 +16,27 @@ A Cardano smart contract that allows users to deposit ADA into the contract and 
 aiken build
 ```
 
+## Configuring
+
+**aiken.toml**
+```toml
+[config.default]
+network_id = 41
+```
+
+Or, alternatively, write conditional environment modules under `env`.
+
 ## Testing
+
+You can write tests in any module using the `test` keyword. For example:
+
+```aiken
+use config
+
+test foo() {
+  config.network_id + 1 == 42
+}
+```
 
 To run all tests, simply do:
 
@@ -30,24 +44,22 @@ To run all tests, simply do:
 aiken check
 ```
 
-## dependencies install
+To run only tests matching the string `foo`, do:
 
 ```sh
-yarn install
+aiken check -m foo
 ```
 
-## running tests by lucid
+## Documentation
 
-go to "src" folder and run below command:
+If you're writing a library, you might want to generate an HTML documentation for it.
+
+Use:
 
 ```sh
-deno run --allow-net --allow-read --allow-env generate-credential.ts
+aiken docs
 ```
 
-```sh
-deno run --allow-net --allow-read --allow-env lock.ts
-```
+## Resources
 
-```sh
-deno run --allow-net --allow-read --allow-env unlock.ts
-```
+Find more on the [Aiken's user manual](https://aiken-lang.org).

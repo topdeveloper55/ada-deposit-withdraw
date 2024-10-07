@@ -1,8 +1,0 @@
-{
-  "extension": ["ts"],
-  "spec": "test/**/*.test.ts",
-  "loader": "ts-node/esm",
-  "require": ["ts-node/register"],
-  "es-module-specifier-resolution": "node",
-  "recursive": true
-}
